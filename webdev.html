@@ -1,0 +1,90 @@
+<DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+		background-color: #006666;//#0d8c73;//make dark teal
+		font-size: 25px;
+		width:85%;
+		margin:auto;
+
+		}
+		a:link {
+    text-decoration: none;
+     }
+
+		div.hefot{
+		background-color:#290a29;
+		height:60px;		
+		}
+		
+		div.bigbox{
+		background-color:#80cbcb;
+		}
+
+		div.post{
+		background-color:grey;
+		padding: 16px;
+		}
+		
+		div.space{
+		height:25px;
+		}
+		
+		div.transbox{
+		
+		background-color:white;
+		height:97%;
+		opacity: .0;
+		}
+		
+	
+		
+		div.transbox p{
+		
+		padding-top:85px;
+		padding-bottom:85px;
+		padding-left:15px;
+		padding-right:15px;
+		background-color:white;
+		color: #000000;
+		font-weightbold;
+		}
+
+	</style>
+</head>
+
+<body>
+<div class= "bigbox">
+<h1>webDevelopment</h1>
+<div id="id01"></div>
+</div>
+<script>
+var xmlhttp = new XMLHttpRequest();
+var url = "http://52.11.117.151/database.php";
+
+xmlhttp.onreadystatechange=function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        myFunction(xmlhttp.responseText);
+    }
+}
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(response) {
+    var arr = JSON.parse(response);
+    var i;
+    var out = " ";
+
+    for(i = 0; i < arr.length;  i++) {
+        if( arr[i].sub == 'webdev'){
+	out += "<h3>" +arr[i].title +
+	"</h3><p>" + 
+        arr[i].firstp +
+        "</p>";        }
+    }
+    document.getElementById("id01").innerHTML = out;
+}
+</script>
+</body>
+</html>
